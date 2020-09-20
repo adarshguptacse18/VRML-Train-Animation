@@ -24,9 +24,7 @@
 
 NavigationInfo { type [ "EXAMINE" "ANY" ] } ###  Default X3D NavigationInfo
 
-WorldInfo {
-  title "MountainStraight.x3d"
-}
+
 Viewpoint {
   description "MountainView"
   orientation 1 0 0 -1.57
@@ -35,8 +33,32 @@ Viewpoint {
 Group {
   children [
       # All these inlined file should be at the same directory.
+     
+      Transform {
+        translation 3 0 0
+        children [
+            DEF MountainX Inline {
+              url [  "MountainX.wrl" ]
+            }
+        ]
+      }
+      Transform {
+        translation 0 0 -3
+        children [
+            DEF MountainY Inline {
+              url [  "MountainY.wrl"  ]
+            }
+        ]
+      }
+      Transform {
+        translation 3 0 -3
+        children [
+            DEF MountainZ Inline {
+              url [ "MountainZ.wrl"  ]
+            }
+        ]
+      }
       
-    
       Transform {
         translation 0 0 -15
         children [

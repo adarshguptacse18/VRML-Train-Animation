@@ -1,0 +1,92 @@
+#VRML V2.0 utf8
+
+
+
+#scenery
+
+
+
+Switch{
+    choice[
+    DEF mountainView Transform {
+        
+        children [
+            Inline {
+              url [  "MountainStraight.wrl" ]
+            }
+        ]
+    }
+
+    DEF lake Transform{
+        children[
+            Inline{
+            url [ "lake.wrl" ]
+            }
+        ]
+    }
+        
+
+        
+    ]
+}
+
+Background {
+    skyColor [ 1 1 1]
+}
+
+
+
+
+Group {
+    children [
+
+        Transform{
+        rotation 0 1 0 1.57 
+        scale 320 10 350
+        children[
+        Inline{
+        url ["GROUND.wrl"]
+        }
+        ]
+        }
+        Transform{
+            translation 0 0 100
+            scale 5 5 5
+            children Inline{
+                url "tracks.wrl"
+            }
+        }
+        Transform{
+            translation 0 8.4 100
+            children Inline{
+                url "Engine.wrl"
+            }
+        }
+
+        Transform{
+            translation 20 -10 -80
+            rotation 0 1 0 1.57
+            scale 20 20 20
+            
+            children[ 
+                USE mountainView
+            ]
+        }
+
+        Transform{
+            translation 500 1 250
+            scale 0.8 0.2 0.8
+            children[ USE lake]
+        }
+        Transform{
+            translation 100 0.2 -70
+            scale 5 3 5
+            children[ 
+                Inline{ url ["forest2.wrl"] }
+            ]
+        }
+
+
+    ]
+
+}

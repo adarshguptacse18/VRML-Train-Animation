@@ -23,7 +23,7 @@
 NavigationInfo { type [ "EXAMINE" "ANY" ] } ###  Default X3D NavigationInfo
 
 WorldInfo {
-  title "SandPit.x3d"
+  title "GROUND"
 }
 Transform {
   children [
@@ -33,7 +33,7 @@ Transform {
             diffuseColor 1 0.9 0.7
           }
           texture ImageTexture {
-            url [ "wood.jpg" "https://savage.nps.edu/Savage/Buildings/PlayGround/wood.jpg" ]
+            url [ "wood.jpg" ]
           }
         }
         geometry Extrusion {
@@ -52,7 +52,7 @@ Transform {
       Shape {
         appearance Appearance {
           texture ImageTexture {
-            url [ "sand.jpg" "https://savage.nps.edu/Savage/Buildings/PlayGround/sand.jpg" ]
+            url [ "ground.jpg"  ]
           }
         }
         geometry Box {

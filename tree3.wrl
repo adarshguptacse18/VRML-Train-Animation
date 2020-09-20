@@ -64,15 +64,15 @@ DEF SingleTree Group {
   ]
 }
 Transform {
-  scale 1.2 .8 1
-  translation -1.6 -.3 -.5
+  scale 1.2 1.8 1
+  translation -1.6 2.2 -.5
   children [
       USE SingleTree
   ]
 }
 Transform {
-  scale 1.2 .5 1
-  translation -1.3 -.5 1.4
+  scale 1.2 1.5 1
+  translation -1.3 2.2 1.4
   children [
       USE SingleTree
   ]

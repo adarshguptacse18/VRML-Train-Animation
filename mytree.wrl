@@ -1,0 +1,69 @@
+#VRML V2.0 utf8
+
+Switch{
+    choice[
+  
+
+    DEF BRANCH Shape{
+        appearance Appearance{
+            texture ImageTexture{
+                url "branch.jpg"
+            }
+        }
+        geometry Cylinder{
+            radius 1
+            height 4
+        }
+    }
+
+    DEF LEAF Shape{
+        appearance Appearance{
+            texture ImageTexture{
+                url "leaf.jpg"
+            }
+        }
+        geometry Sphere{
+            radius 2
+            
+        }
+    }
+
+
+    DEF TREE Group{                                 #---Grouping for tree is done
+        children[
+            Transform{
+            scale 1 2 1
+            translation 0 5.5 0
+                children[
+                    USE LEAF
+                ]
+            }
+            Transform{
+            translation 0 0 0
+                children[
+                    USE BRANCH
+                ]
+            }
+
+        ]
+
+    }
+
+
+
+    ]
+}
+
+
+
+Group{
+    children[
+    Transform{
+        translation 0 0 0
+        children[USE TREE]
+    }
+    
+    ]
+}
+
+
