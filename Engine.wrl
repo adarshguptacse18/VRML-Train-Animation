@@ -264,7 +264,13 @@ DEF ENGINE Transform{
                  url "wheel2.wrl"
             }
         }
-        
+        DEF CHIMNEY Transform{
+                    translation -12 5 0
+                    scale 5 5 5
+                    children Inline{
+                        url "testing.wrl"
+                    }
+        }
         DEF EXTRA_MATERIAL Group{
             children[
                 Transform {
@@ -303,6 +309,8 @@ DEF ENGINE Transform{
                     translation 2.7 0 0
                     children USE STRIP
                 }
+
+                
             ]
         }
         
