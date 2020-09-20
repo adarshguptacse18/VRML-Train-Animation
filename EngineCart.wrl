@@ -1,0 +1,39 @@
+#VRML V2.0 utf8
+
+
+Background {
+    skyColor [  1 1 1]
+}
+
+
+Group {
+    children [
+        Transform {
+            children Shape {
+                appearance Appearance{
+                    texture ImageTexture {
+                        url "Engine_Texture.jpg"
+                        repeatS TRUE
+                        repeatT TRUE
+                    }
+                    material Material {
+                        # diffuseColor 0 0 0
+                        # specularColor 0.45 0.45 0.45
+                        # shininess 1
+                        # emissiveColor 0.5 0.5 0.5
+                    }
+                }
+                geometry Box {
+                    size 9 5 5
+                }
+            }
+        }
+         DEF SMALL_WHEEL Transform {
+            translation -2.5 -5 4 
+            scale 7.5 7.5 7.5 
+            children Inline {
+                 url "wheel2.wrl"
+            }
+        }
+    ]
+}
