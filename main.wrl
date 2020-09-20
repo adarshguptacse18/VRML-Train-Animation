@@ -1,0 +1,16 @@
+#VRML V2.0 utf8
+
+
+#scenery
+
+
+
+Switch{
+	Choice[
+		DEF Group mountains{
+		child[USE inline "MountainStartlight.wrl"]
+		}
+
+		
+	]
+}
