@@ -1,0 +1,364 @@
+#VRML V2.0 utf8
+
+Background {
+    skyColor [  1 1 1]
+}
+
+DEF ENGINE Transform{
+    children [
+        Transform {
+            rotation   0 0 1 1.57
+            children 
+                Shape{  
+                    appearance Appearance {  
+                        texture ImageTexture {
+                            url "Engine_Texture.jpg"
+                            repeatS TRUE
+                            repeatT TRUE
+                        }           
+                    }
+                    geometry Cylinder {
+                        radius 4
+                        height 30
+                    }
+                }
+        }
+        Transform {
+            translation 10 2 0
+            children 
+                Shape{  
+                    appearance Appearance {  
+                        # texture ImageTexture {
+                        #     url "Steel.jpg.jpg"
+                        #     repeatS TRUE
+                        #     repeatT TRUE
+                        # }            
+                        material Material { 
+                                diffuseColor 0.4118     0.4118    0.4118  
+                                shininess 1
+                                emissiveColor 0.3118     0.3118    0.318  
+                            }
+                        }
+                    geometry Box {
+                        size 10.1 10.5 8.1
+                    }
+                }
+        }
+        
+        Transform {
+            translation -0.1 0 0 
+            rotation   0 0 1 1.57
+            children 
+                Shape{  
+                    appearance Appearance {  
+                                     
+                        material Material { 
+                                diffuseColor 0.5200     0.5200    0.52
+                            }
+                        }
+                    geometry Cylinder {
+                        radius 2
+                        height 30
+                    }
+                }
+        }
+        Transform {
+            translation -0.3 0 0 
+            rotation   0 0 1 1.57
+            children 
+                Shape{  
+                    appearance Appearance {  
+                                     
+                        material Material { 
+                                diffuseColor 0.5200     0.5200    0.52
+                            }
+                        }
+                    geometry Cylinder {
+                        radius 1.7
+                        height 30
+                    }
+                }
+        }
+        Transform {
+            translation -15.0 0 0 
+            rotation   0 0 1 1.57
+            children 
+                Shape{  
+                    appearance Appearance {  
+                                     
+                        material Material { 
+                                diffuseColor 0.5200     0.5200    0.52
+                            }
+                        }
+                    geometry Sphere {
+                        radius 1.2
+                    } 
+                }
+        }
+        Transform {
+            translation 2 -4.5 0
+            children 
+                Shape{  
+                    appearance Appearance {                    
+                        material Material { 
+                                diffuseColor 0 0 0
+                            }
+                        }
+                    geometry Box {
+                        size 26 3 5
+                    }
+                }
+        }
+        Transform {
+            translation -10 -4.9 0
+            children 
+                Shape{  
+                    appearance Appearance {                    
+                        material Material { 
+                                diffuseColor 0.2 0.2 0.2
+                            }
+                        }
+                    geometry Box {
+                        size 10 1 5
+                    }
+                }
+        }
+        Transform {
+            translation -16 -5.5 0
+            children 
+                Shape{  
+                    appearance Appearance {                    
+                        material Material { 
+                                diffuseColor 0.2 0.2 0.2
+                            }
+                        }
+                    geometry Box {
+                        size 1 2 7
+                    }
+                }
+        }
+        Transform {
+            translation -15 -5.0 0
+            children 
+                Shape{  
+                    appearance Appearance {                    
+                        material Material { 
+                                diffuseColor 0.4 0.4 0.5
+                            }
+                        }
+                    geometry Box {
+                        size 2 1 7.1
+                    }
+                }
+        }
+        Transform{
+            rotation 0 0 1 1.57
+            translation -18 -5.5 0
+            scale 1 2.3 5
+            children 
+                Shape {
+                    appearance Appearance{
+                        material Material { 
+                            diffuseColor     0.2 0.2 0.2#simple red
+                            }
+                        }
+                    geometry IndexedFaceSet {
+                        coord Coordinate {
+                                    point [
+                                # bottom 
+                                -1.0 -1.0 1.0,	#vertex 0
+                                1.0 -1.0 1.0,	#vertex 1
+                                1.0 -1.0 -1.0,	#vertex 2
+                                -1.0 -1.0 -1.0,	#vertex 3
+                                # top
+                                -1.0 1.5 0.0		#vertex 4
+                                    ]
+                                }
+                        coordIndex [
+                            #bottom square
+                            0, 3, 2, 1, 0, -1,
+                            #side1
+                            0, 1, 4, -1,
+                            #side2
+                            1, 2, 4, -1,
+                            #side3
+                            2, 3, 4, -1,
+                            #side4
+                            3, 0, 4, -1,
+                            ]
+                            
+                    }
+            }
+        }
+        DEF CHIMNEY Transform{
+            translation -10 5 0
+            children [
+                Shape{
+                    appearance Appearance{
+                        material Material {
+                            diffuseColor 0.4 0.4 0.4
+                            specularColor 0.45 0.45 0.45
+                            shininess 1
+                            emissiveColor 0.5 0.5 0.5
+                        }
+                    }
+                    geometry Cylinder {
+                        radius 1
+                        height 5
+                        # bottom 底面の有無
+                        # top 上面の有無
+                        # side 側面の有無
+                    }
+                }
+                Transform{
+                    translation 0 1 0
+                    children Shape{
+                        appearance Appearance{
+                            material Material {
+                                diffuseColor 0.8 0 0
+                                # specularColor 0.45 0.45 0.45
+                                # shininess 1
+                                # emissiveColor 0.5 0.5 0.5
+                            }
+                        }
+                        geometry Cylinder {
+                            radius 0.8
+                            height 3.5
+                            # bottom 底面の有無
+                            # top 上面の有無
+                            # side 側面の有無
+                        }
+                    }
+                }
+
+            ]
+        }
+        Transform{
+            translation 10 0 0
+            scale 1.3 1.3 1.5
+            children USE CHIMNEY
+        }
+        DEF WHEEL Transform {
+            translation 10 -4 6 
+            scale 10 10 10
+            children Inline {
+                 url "wheel.wrl"
+            }
+        }
+        Transform{
+            translation -6.3 0 0
+            children USE WHEEL
+        }
+        Transform{
+            translation -6.3 0 -10
+            children USE WHEEL
+        }
+         Transform{
+            translation 0 0 -10
+            children USE WHEEL
+        }
+        DEF SMALL_WHEEL Transform {
+            translation -2.5 -5 4 
+            scale 7.5 7.5 7.5 
+            children Inline {
+                 url "wheel2.wrl"
+            }
+        }
+        
+        DEF EXTRA_MATERIAL Group{
+            children[
+                Transform {
+                    translation -7 -5 3
+                    rotation   0 0 1 1.57
+                    children 
+                        Shape{  
+                            appearance Appearance {                    
+                                material Material { 
+                                        diffuseColor  0.4118     0.4118    0.4118  
+                                    }
+                                }
+                            geometry Cylinder {
+                                radius 1.4
+                                height 4.5
+                            }
+                        }
+                }
+                DEF STRIP Transform{
+                    translation -8.3 -5 3
+                    rotation   0 0 1 1.57
+                    children 
+                        Shape{  
+                            appearance Appearance {                    
+                                material Material { 
+                                        diffuseColor 1 1 1
+                                    }
+                                }
+                            geometry Cylinder {
+                                radius 1.41
+                                height 0.4
+                            }
+                        }
+                }
+                Transform{
+                    translation 2.7 0 0
+                    children USE STRIP
+                }
+            ]
+        }
+        
+        
+        Transform{
+            translation -9.5 0 0
+            children USE SMALL_WHEEL
+        }
+        Transform{
+            translation -9.5 0 -7
+            children USE SMALL_WHEEL
+        }
+        Transform{
+            translation 0 0 -7
+            children USE SMALL_WHEEL
+        }
+        Transform{
+            translation 0 0 -7
+            children USE EXTRA_MATERIAL
+        }
+       
+    ]
+}
+
+
+
+
+DEF timer TimeSensor {
+	cycleInterval 8
+	loop TRUE
+}
+
+DEF pi PositionInterpolator {
+	key [ 0 1 ]
+	keyValue [10 1 0, -10 1 0]
+}
+
+DEF oi OrientationInterpolator {
+	key [0 0.157 0.314 0.471 0.628 0.785 0.942 1]
+	keyValue [ 0 0 1 0, 0 0 1 3.14, 0 0 1 6.28, 0 0 1  9.42, 0 0 1 12.56, 
+			0 0 1 15.7, 0 0 1 18.84, 0 0 1 20.0 ]
+}
+
+DEF si ScalarInterpolator {
+	key [ 0 1]
+	keyValue [0 1]
+}
+
+
+
+
+ROUTE timer.fraction_changed TO si.set_fraction
+ROUTE si.value_changed TO pi.set_fraction
+ROUTE pi.value_changed TO ENGINE.set_translation
+ROUTE timer.fraction_changed TO oi.set_fraction
+
+ROUTE si.value_changed TO oi.set_fraction
+ROUTE oi.value_changed TO WHEEL.set_rotation
+ROUTE oi.value_changed TO SMALL_WHEEL.set_rotation
