@@ -11,13 +11,9 @@ DEF ENGINE Transform{
             children 
                 Shape{  
                     appearance Appearance {  
-                        texture ImageTexture {
-                            url "Engine_Texture.jpg"
-                            repeatS TRUE
-                            repeatT TRUE
-                        }           
+                                   
                         material Material { 
-                                # diffuseColor 0.4118     0.4118    0.4118  
+                                diffuseColor 0.4118     0.4118    0.4118  
                             }
                         }
                     geometry Cylinder {
