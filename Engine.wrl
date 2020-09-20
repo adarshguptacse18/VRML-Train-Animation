@@ -11,11 +11,12 @@ DEF ENGINE Transform{
             children 
                 Shape{  
                     appearance Appearance {  
-                                   
-                        material Material { 
-                                diffuseColor 0.4118     0.4118    0.4118  
-                            }
-                        }
+                        texture ImageTexture {
+                            url "Engine_Texture.jpg"
+                            repeatS TRUE
+                            repeatT TRUE
+                        }           
+                    }
                     geometry Cylinder {
                         radius 4
                         height 30
@@ -27,15 +28,19 @@ DEF ENGINE Transform{
             children 
                 Shape{  
                     appearance Appearance {  
-                                     
-                        material Material { 
-                                diffuseColor 0.4118     0.4118    0.4118  
-                                shininess 1
-                                emissiveColor 0.3118     0.3118    0.318  
-                            }
-                        }
+                        texture ImageTexture {
+                            url "Steel.jpg.jpg"
+                            repeatS TRUE
+                            repeatT TRUE
+                        }            
+                        # material Material { 
+                        #         diffuseColor 0.4118     0.4118    0.4118  
+                        #         shininess 1
+                        #         emissiveColor 0.3118     0.3118    0.318  
+                        #     }
+                        # }
                     geometry Box {
-                        size 10.1 10.5 8
+                        size 10.1 10.5 8.1
                     }
                 }
         }
