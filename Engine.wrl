@@ -33,12 +33,12 @@ DEF ENGINE Transform{
                             repeatS TRUE
                             repeatT TRUE
                         }            
-                        # material Material { 
-                        #         diffuseColor 0.4118     0.4118    0.4118  
-                        #         shininess 1
-                        #         emissiveColor 0.3118     0.3118    0.318  
-                        #     }
-                        # }
+                        material Material { 
+                                diffuseColor 0.4118     0.4118    0.4118  
+                                shininess 1
+                                emissiveColor 0.3118     0.3118    0.318  
+                            }
+                        }
                     geometry Box {
                         size 10.1 10.5 8.1
                     }

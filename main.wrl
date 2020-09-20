@@ -1,0 +1,55 @@
+#VRML V2.0 utf8
+
+
+Background {
+    skyColor [  1 1 1]
+}
+
+# Separator {
+#     PerspectiveCamera {
+#         # position        
+#         # orientation     1 0.8 0  -0.6
+#         # focalDistance   300
+#         # heightAngle     0.785398
+#     }
+# }
+
+Transform {
+    translation 0 0 0
+    children[
+        Shape {
+            appearance Appearance {
+                #  texture ImageTexture {
+                #             url "models/images/ground.jpg.jpg"
+                #             repeatS TRUE
+                #             repeatT TRUE
+                #         }
+                material Material {
+                    diffuseColor  0.85 0.53    0.1
+
+                }
+
+            }
+            geometry Box {
+                size 1000 0.1  1000    
+            }
+        }
+    ]
+}
+Group {
+    children [
+        Transform{
+            translation 0 0 400
+            scale 5 5 5
+            children Inline{
+                url "tracks.wrl"
+            }
+        }
+        Transform{
+            translation 0 8.4 400
+            children Inline{
+                url "Engine.wrl"
+            }
+        }
+    ]
+}
