@@ -3,7 +3,11 @@
 
 
 #scenery
-
+Background {
+  groundColor [ 0 0 0 ]
+  skyAngle [ 1.309 1.571 ]
+  skyColor [ 0 0.2 0.7 0 0.5 1 0.59       0.27      0.08]
+}
 Separator {
     PerspectiveCamera {
         position        400 8.4 150
@@ -68,7 +72,7 @@ DEF BACKGROUNDSCENE1 Transform {
         }
         Transform{
             translation 0 0 100
-            scale 5 5 5
+            scale 6.5 5 5
             children Inline{
                 url "tracks.wrl"
             }
@@ -107,22 +111,40 @@ DEF BACKGROUNDSCENE1 Transform {
             ]
         }
 
+        
+
 
     ]
 
 }
-  Transform{
-    translation 400 8.4 100
-    children Inline{
-        url "Engine.wrl"
-    }
+DEF FULLTRAIN Group{
+    children[
+        Transform{
+            translation 265 8.4 100
+            children Inline{
+                url "Engine.wrl"
+            }
+        }
+        Transform{
+            translation 398 8.5 100
+            scale 1.9 2 2
+            children Inline{
+                url "wagon.wrl"
+            }
+        }
+
+
+    ]
 }
+  
 
-
-
+DEF touchBox TouchSensor {}
 
 DEF timer TimeSensor {
+    startTime -1
+    stopTime 0
 	cycleInterval 60
+
 	loop TRUE
 	enabled TRUE
 }
@@ -144,7 +166,7 @@ DEF scene1 PositionInterpolator {
 # }
 
 
-
+ROUTE touchBox.touchTime TO timer.startTime
 ROUTE timer.fraction_changed TO scene1.set_fraction
 # ROUTE timer.fraction_changed TO engine1.set_fraction
 

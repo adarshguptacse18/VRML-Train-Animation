@@ -9,7 +9,7 @@ Switch{
       DEF WAGON_HEAD1 Shape {
           appearance DEF White Appearance {
           	texture ImageTexture{
-          		url "ewagon_top.jpeg"
+          		url "ewagon_top.jpg"
           	}
             material Material {
             }
@@ -202,4 +202,35 @@ Group{
   ]
 }
 
+DEF timer TimeSensor {
+	cycleInterval 8
+	loop TRUE
+}
+
+DEF pi PositionInterpolator {
+	key [ 0 1 ]
+	keyValue [10 1 0, -10 1 0]
+}
+
+DEF oi OrientationInterpolator {
+	key [0 0.157 0.314 0.471 0.628 0.785 0.942 1]
+	keyValue [ 0 0 1 0, 0 0 1 3.14, 0 0 1 6.28, 0 0 1  9.42, 0 0 1 12.56, 
+			0 0 1 15.7, 0 0 1 18.84, 0 0 1 20.0 ]
+}
+
+DEF si ScalarInterpolator {
+	key [ 0 1]
+	keyValue [0 1]
+}
+
+
+
+
+ROUTE timer.fraction_changed TO si.set_fraction
+ROUTE si.value_changed TO pi.set_fraction
+# ROUTE pi.value_changed TO ENGINE.set_translation
+ROUTE timer.fraction_changed TO oi.set_fraction
+
+ROUTE si.value_changed TO oi.set_fraction
+ROUTE oi.value_changed TO WHEEL.set_rotation
 
