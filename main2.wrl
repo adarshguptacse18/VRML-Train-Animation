@@ -12,7 +12,7 @@ Switch{
         
         children [
             Inline {
-              url [  "MountainStraight.wrl" ]
+                url [  "MountainStraight.wrl" ]
             }
         ]
     }
@@ -20,7 +20,7 @@ Switch{
     DEF lake Transform{
         children[
             Inline{
-            url [ "lake.wrl" ]
+                url [ "lake.wrl" ]
             }
         ]
     }
@@ -44,9 +44,9 @@ Group {
         rotation 0 1 0 1.57 
         scale 320 10 350
         children[
-        Inline{
-        url ["GROUND.wrl"]
-        }
+            Inline{
+                url ["GROUND.wrl"]
+            }
         ]
         }
         Transform{
@@ -83,6 +83,15 @@ Group {
             scale 5 3 5
             children[ 
                 Inline{ url ["forest2.wrl"] }
+            ]
+        }
+
+        Transform{
+            translation -300 20 150
+            rotation 0 1 0 3.14
+            scale 6 15 6
+            children[
+                Inline{ url["vrml-windmill/windmill-animation.wrl"] }
             ]
         }
 
