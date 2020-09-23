@@ -1,0 +1,217 @@
+#VRML V2.0 utf8
+
+DEF SNOW Transform {
+    children Shape {
+        geometry Sphere {
+            radius 0.1
+        }
+    }
+}
+DEF SNOW_ROW Transform {
+    translation 0 1 0
+    children[
+        USE SNOW
+        Transform{
+            translation 0 2 0
+            children[
+                USE SNOW
+                Transform{
+                    translation 0 3 0
+                    children[
+                        USE SNOW
+                        Transform {
+                            translation 0 4 0
+                            children[
+                                USE SNOW
+                                Transform{
+                                    translation 0 3.1 0
+                                    children[
+                                        USE SNOW
+                                        Transform{
+                                            translation 0 1 0
+                                            children[
+                                                USE SNOW
+                                                
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                        
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+DEF SNOW_2D Transform{
+    rotation 1 0 0 -0.1
+    children[
+        Transform{
+            translation -1 0 0
+            children[
+                USE SNOW_ROW
+                Transform{
+                    translation -1.4 0 0
+                    children[
+                        USE SNOW_ROW
+                        Transform{
+                            translation -1.1 0 0
+                            children[
+                                USE SNOW_ROW
+                                Transform{
+                                    translation -2.1 0 0
+                                    children[
+                                        USE SNOW_ROW
+                                        Transform{
+                                            translation -0.1 0 0
+                                            children[
+                                                USE SNOW_ROW
+                                                Transform{
+                                                    translation -1 0 0
+                                                    children[
+                                                        USE SNOW_ROW
+                                                        Transform{
+                                                            translation -1 0 0
+                                                            children[
+                                                                USE SNOW_ROW
+                                                                Transform{
+                                                                    translation -1 0 0
+                                                                    children[
+                                                                        USE SNOW_ROW
+                                                                        
+                                                                    ]
+                                                                }
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
+DEF SNOW_3D Transform{
+    translation 0 0 1
+    rotation 0 1 1 0.1
+    children[
+        USE SNOW_2D
+        Transform{
+            translation 0 0 2
+            children[
+                USE SNOW_2D
+                Transform{
+                    translation 0 0 4
+                    children[
+                        USE SNOW_2D
+                        Transform{
+                            translation 0 0 1.5
+                            children[
+                                USE SNOW_2D
+                                Transform{
+                                    translation 0 0 -1
+                                    children[
+                                        USE SNOW_2D
+                                        Transform{
+                                            translation 0 0 -1.5
+                                            children[
+                                                USE SNOW_2D
+                                                Transform{
+                                                    translation 0 0 -2
+                                                    children[
+                                                        USE SNOW_2D
+                                                        Transform{
+                                                            translation 0 0 -1
+                                                            children[
+                                                                USE SNOW_2D
+                                                                
+                                                            ]
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+# DEF touchBox TouchSensor {}
+
+# DEF timer TimeSensor {
+#     startTime -1
+#     stopTime 0
+# 	cycleInterval 60
+
+# 	loop TRUE
+# 	enabled TRUE
+# }
+
+
+# DEF MOVE_View  PositionInterpolator{
+#     key [0 1]
+#     keyValue [220 15 150 ,-620 15 200]
+# }
+
+# DEF SKY PositionInterpolator {
+#     key [ 0 1]
+#     keyValue [0 -200 -500, 0 500 -500]
+# }
+
+# DEF TRAIN PositionInterpolator {
+#     key [0 1]
+#     keyValue [265 8.4 100,-610 8.4 100]
+# }
+
+# ROUTE touchBox.touchTime TO timer.startTime
+# ROUTE timer.fraction_changed TO SKY.set_fraction
+# ROUTE timer.fraction_changed TO MOVE_View.set_fraction
+# ROUTE timer.fraction_changed TO TRAIN.set_fraction
+# ROUTE SKY.value_changed TO BACKGROUND.set_translation
+# ROUTE MOVE_View.value_changed TO Camera_001.set_position
+# ROUTE TRAIN.value_changed TO FULLTRAIN.set_translation
+
+
+
+
+
+
+DEF timer TimeSensor {
+	cycleInterval 30
+	loop TRUE
+	enabled TRUE
+}
+
+
+DEF scene1 PositionInterpolator {
+    key [0.00.010.020.030.040.050.060.070.080.090.10.110.120.130.140.150.160.170.180.190.20.210.220.230.240.250.260.270.280.290.30.310.320.330.340.350.360.370.380.390.40.410.420.430.440.450.460.470.480.490.50.510.520.530.540.550.560.570.580.590.60.610.620.630.640.650.660.670.680.690.70.710.720.730.740.750.760.770.780.790.80.810.820.830.840.850.860.870.880.890.90.910.920.930.940.950.960.970.980.99]
+    keyValue [0 0 0,0 1 0,0 2 0,0 3 0,0 4 0,0 5 0,0 6 0,0 7 0,0 8 0,0 9 0,0 10 0,0 11 0,0 12 0,0 13 0,0 14 0,0 15 0,0 16 0,0 17 0,0 18 0,0 19 0,0 20 0,0 21 0,0 22 0,0 23 0,0 24 0,0 25 0,0 26 0,0 27 0,0 28 0,0 29 0,0 30 0,0 31 0,0 32 0,0 33 0,0 34 0,0 35 0,0 36 0,0 37 0,0 38 0,0 39 0,0 40 0,0 41 0,0 42 0,0 43 0,0 44 0,0 45 0,0 46 0,0 47 0,0 48 0,0 49 0,0 50 0,0 51 0,0 52 0,0 53 0,0 54 0,0 55 0,0 56 0,0 57 0,0 58 0,0 59 0,0 60 0,0 61 0,0 62 0,0 63 0,0 64 0,0 65 0,0 66 0,0 67 0,0 68 0,0 69 0,0 70 0,0 71 0,0 72 0,0 73 0,0 74 0,0 75 0,0 76 0,0 77 0,0 78 0,0 79 0,0 80 0,0 81 0,0 82 0,0 83 0,0 84 0,0 85 0,0 86 0,0 87 0,0 88 0,0 89 0,0 90 0,0 91 0,0 92 0,0 93 0,0 94 0,0 95 0,0 96 0,0 97 0,0 98 0,0 99 0]
+	# key [0.0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.2 0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28 0.29 0.3 0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4 0.41 0.42 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58 0.59 0.6 0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.7 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8 0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.9 0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1]
+	# keyValue [0 0 0,3 0 0,6 0 0,9 0 0,12 0 0,15 0 0,18 0 0,21 0 0,24 0 0,27 0 0,30 0 0,33 0 0,36 0 0,39 0 0,42 0 0,45 0 0,48 0 0,51 0 0,54 0 0,57 0 0,60 0 0,63 0 0,66 0 0,69 0 0,72 0 0,75 0 0,78 0 0,81 0 0,84 0 0,87 0 0,90 0 0,93 0 0,96 0 0,99 0 0,102 0 0,105 0 0,108 0 0,111 0 0,114 0 0,117 0 0,120 0 0,123 0 0,126 0 0,129 0 0,132 0 0,135 0 0,138 0 0,141 0 0,144 0 0,147 0 0,150 0 0,153 0 0,156 0 0,159 0 0,162 0 0,165 0 0,168 0 0,171 0 0,174 0 0,177 0 0,180 0 0,183 0 0,186 0 0,189 0 0,192 0 0,195 0 0,198 0 0,201 0 0,204 0 0,207 0 0,210 0 0,213 0 0,216 0 0,219 0 0,222 0 0,225 0 0,228 0 0,231 0 0,234 0 0,237 0 0,240 0 0,243 0 0,246 0 0,249 0 0,252 0 0,255 0 0,258 0 0,261 0 0,264 0 0,267 0 0,270 0 0,273 0 0,276 0 0,279 0 0,282 0 0,285 0 10,288 0 20,291 0 30,294 0 40,297 0 50,297 0 80]
+}
+
+
+ROUTE timer.fraction_changed TO scene1.set_fraction
+
+# ROUTE si.value_changed TO pi.set_fraction
+ROUTE scene1.value_changed TO SNOW_3D.set_translation
+ROUTE scene1.value_changed TO SNOW_2D.set_translation
+ROUTE scene1.value_changed TO SNOW_ROW.set_translation
+ROUTE scene1.value_changed TO SNOW.set_translation
+
+

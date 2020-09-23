@@ -1,99 +1,270 @@
 #VRML V2.0 utf8
-# Switch{
-# 	Choice[
-# 		DEF Group mountains{
-# 		child[USE inline "MountainStartlight.wrl"]
-# 		}
-
-		
-# 	]
-# }
 
 Background {
-    skyColor [  1 1 1]
-}
-
-Separator {
-    PerspectiveCamera {
-        position        340 9.21 504
-        # orientation     1 0.8 0  -0.6
-        # focalDistance   300
-        # heightAngle     0.785398
-    }
+  groundColor [ 0 0 0 ]
+  skyAngle [ 1.309 1.571 ]
+  skyColor [ 0 0.2 0.7 0 0.5 1 0.59       0.27      0.08]
 }
 
 
-DEF BACKGROUNDSCENE1 Transform {
+DEF BACKGROUND Transform {
+    translation 0 -200 -500
     children [
-		Transform {
-			translation 0 0 0
-			children[
-				Shape {
-					appearance Appearance {
-						#  texture ImageTexture {
-						#             url "models/images/ground.jpg.jpg"
-						#             repeatS TRUE
-						#             repeatT TRUE
-						#         }
-						material Material {
-							diffuseColor  0.85 0.53    0.1
-
-						}
-
-					}
-					geometry Box {
-						size 1000 0.1  1000    
-					}
-				}
-			]
-		}
-        Transform{
-            translation 0 0 400
-            scale 5 5 5
-            children Inline{
-                url "tracks.wrl"
+        Shape {
+        geometry Box{
+            size 2000 1000 1
+        }
+        appearance Appearance {
+             texture ImageTexture {
+                url "model/sunsetbackground.jpeg"
+                repeatS TRUE
+                repeatT TRUE
+            }      
+        }
+        }
+        Transform {
+            translation 0 -990 0
+            rotation 0 0 1 3.14
+            children Shape {
+                geometry Box{
+                    size 2000 1000 1
+                }
+                appearance Appearance {
+                    texture ImageTexture {
+                        url "model/sunsetbackground.jpeg"
+                        repeatS TRUE
+                        repeatT TRUE
+                    }      
+                }
             }
         }
     ]
-}
-DEF MYTRAIN Transform{
-		translation 350 8.4 400
-		children Inline{
-			url "Engine.wrl"
-		}
+    
 }
 
+
+DEF Camera_Rot Transform {
+  rotation 0 1 0 0
+  children [
+    DEF Camera_Transl Transform {
+      translation 0 0 0
+      children [
+        DEF Camera_001 Viewpoint {
+          position 220 15 150
+          orientation 0 1 0 -0.5
+        }
+        Transform{
+                  translation 0 0 0
+                  children[
+                            DEF mountainView Transform {
+                                children [
+                                    Inline {
+                                        url [  "model/MountainStraight.wrl" ]
+                                    }
+                                ]
+                            }
+                            DEF lake Transform{
+                                children[
+                                    Inline{
+                                        url [ "model/lake.wrl" ]
+                                    }
+                                    DEF COW Transform{
+                                        translation 6 0 0
+                                        rotation 0 1 0 -1.57
+                                        scale 4 4 4
+                                        children Inline {
+                                            url "model/cow.wrl"
+                                        }
+                                    }
+                                    Transform {
+                                        translation -2 0 20
+                                        rotation 0 1 0 0.2
+                                        children USE COW
+                                    }
+                                    Transform {
+                                        translation -6 0 40
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+                                     Transform {
+                                        translation -6 0 60
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+                                     Transform {
+                                        translation -20 0 40
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+                                     Transform {
+                                        translation 26 0 -40
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+                                     Transform {
+                                        translation 54 0 0
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+                                     Transform {
+                                        translation 6 0 -40
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+                                     Transform {
+                                        translation -26 0 -40
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+                                     Transform {
+                                        translation 26 0 40
+                                        rotation 0 1 0 0.8
+                                        children USE COW
+                                    }
+
+                                ]
+                            }   
+                            Transform {
+                                translation 245 0 60
+                                scale 4 4 4
+                                children Inline{
+                                    url "model/cow.wrl"
+                                }
+                            }
+                            Transform {
+                                translation 245 0 0
+                                rotation 1 0 0 -1.57
+                                scale 0.5 0.5 0.5
+                                children Inline{
+                                    url "model/t1.wrl"
+                                }
+                            }
+                            Transform{
+                                rotation 0 1 0 1.57 
+                                scale 320 10 350
+                                children[
+                                    Inline{
+                                        url ["model/GROUND.wrl"]
+                                    }
+                                ]     
+                            }    
+                            Transform{
+                                translation 0 0 100
+                                scale 6.5 5 5
+                                children Inline{
+                                    url "model/tracks.wrl"
+                                }
+                            }
+                        
+
+                            Transform{
+                                translation 20 -10 -80
+                                rotation 0 1 0 1.57
+                                scale 20 20 20
+                                
+                                children[ 
+                                    USE mountainView
+                                ]
+                            }
+
+                            Transform{
+                                translation 500 1 250
+                                scale 0.8 0.2 0.8
+                                children[ 
+                                    USE lake                                   
+                                ]
+                            }
+                            Transform{
+                                translation 100 0.2 -70
+                                scale 5 3 5
+                                children[ 
+                                    Inline{ url ["model/forest2.wrl"] }
+                                ]
+                            }
+
+                            Transform{
+                                translation -300 20 -50
+                                # rotation 0 0 0 0
+                                scale 6 15 6
+                                children[
+                                    Inline{ url["model/vrml-windmill/windmill-animation.wrl"] }
+                                ]
+                            } 
+                            Transform{
+                                translation -400 0   -50
+                                # rotation 0 0 0 0
+                                scale 4 5 4
+                                children[
+                                    Inline{ url["model/MyWindMill.wrl"] }
+                                ]
+                            } 
+                            Transform{
+                                translation -300 20 -50
+                                # rotation 0 0 0 0
+                                scale 6 15 6
+                                children[
+                                    Inline{ url["model/vrml-windmill/windmill-animation.wrl"] }
+                                ]
+                            } 
+                            DEF FULLTRAIN Transform{
+                                translation 265 8.4 100
+                                children[
+                                    Transform{
+                                        children Inline{
+                                            url "model/Engine.wrl"
+                                        }
+                                    }
+                                    Transform{
+                                        translation 133 0.1 0
+                                        scale 1.9 2 2
+                                        children Inline{
+                                            url "model/wagon.wrl"
+                                        }
+                                    }
+                                ]
+                            }                  
+                        ]
+              }
+      ]
+    }
+  ]
+}
+
+DEF touchBox TouchSensor {}
+
 DEF timer TimeSensor {
-	cycleInterval 30
+    startTime -1
+    stopTime 0
+	cycleInterval 50
+
 	loop TRUE
 	enabled TRUE
 }
 
 
-DEF scene1 PositionInterpolator {
-	key [ 0.0 0.25 0.3 0.35 0.4 0.45 0.5]
-	keyValue [0 0 0, 100 0 0, 100 0 80, 100 0 160, 100 0 240, 100 0 320,100 0 360]
-	# key [0.0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.2 0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28 0.29 0.3 0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4 0.41 0.42 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58 0.59 0.6 0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.7 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8 0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.9 0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1]
-	# keyValue [0 0 0,3 0 0,6 0 0,9 0 0,12 0 0,15 0 0,18 0 0,21 0 0,24 0 0,27 0 0,30 0 0,33 0 0,36 0 0,39 0 0,42 0 0,45 0 0,48 0 0,51 0 0,54 0 0,57 0 0,60 0 0,63 0 0,66 0 0,69 0 0,72 0 0,75 0 0,78 0 0,81 0 0,84 0 0,87 0 0,90 0 0,93 0 0,96 0 0,99 0 0,102 0 0,105 0 0,108 0 0,111 0 0,114 0 0,117 0 0,120 0 0,123 0 0,126 0 0,129 0 0,132 0 0,135 0 0,138 0 0,141 0 0,144 0 0,147 0 0,150 0 0,153 0 0,156 0 0,159 0 0,162 0 0,165 0 0,168 0 0,171 0 0,174 0 0,177 0 0,180 0 0,183 0 0,186 0 0,189 0 0,192 0 0,195 0 0,198 0 0,201 0 0,204 0 0,207 0 0,210 0 0,213 0 0,216 0 0,219 0 0,222 0 0,225 0 0,228 0 0,231 0 0,234 0 0,237 0 0,240 0 0,243 0 0,246 0 0,249 0 0,252 0 0,255 0 0,258 0 0,261 0 0,264 0 0,267 0 0,270 0 0,273 0 0,276 0 0,279 0 0,282 0 0,285 0 10,288 0 20,291 0 30,294 0 40,297 0 50,297 0 80]
-}
-DEF engine1 PositionInterpolator {
-	key [ 0.0 0.25 0.3 0.35 0.4 0.45 0.5]
-	keyValue [350 8.4 400, 350 8.4 400,350 8.4 480,350 8.4 560,350 8.4 640,350 8.4 720,350 8.4 800]
-	# key [0.0 0.01 0.02 0.03 0.04 0.05 0.06 0.07 0.08 0.09 0.1 0.11 0.12 0.13 0.14 0.15 0.16 0.17 0.18 0.19 0.2 0.21 0.22 0.23 0.24 0.25 0.26 0.27 0.28 0.29 0.3 0.31 0.32 0.33 0.34 0.35 0.36 0.37 0.38 0.39 0.4 0.41 0.42 0.43 0.44 0.45 0.46 0.47 0.48 0.49 0.5 0.51 0.52 0.53 0.54 0.55 0.56 0.57 0.58 0.59 0.6 0.61 0.62 0.63 0.64 0.65 0.66 0.67 0.68 0.69 0.7 0.71 0.72 0.73 0.74 0.75 0.76 0.77 0.78 0.79 0.8 0.81 0.82 0.83 0.84 0.85 0.86 0.87 0.88 0.89 0.9 0.91 0.92 0.93 0.94 0.95 0.96 0.97 0.98 0.99 1]
-	# keyValue [0 0 0,3 0 0,6 0 0,9 0 0,12 0 0,15 0 0,18 0 0,21 0 0,24 0 0,27 0 0,30 0 0,33 0 0,36 0 0,39 0 0,42 0 0,45 0 0,48 0 0,51 0 0,54 0 0,57 0 0,60 0 0,63 0 0,66 0 0,69 0 0,72 0 0,75 0 0,78 0 0,81 0 0,84 0 0,87 0 0,90 0 0,93 0 0,96 0 0,99 0 0,102 0 0,105 0 0,108 0 0,111 0 0,114 0 0,117 0 0,120 0 0,123 0 0,126 0 0,129 0 0,132 0 0,135 0 0,138 0 0,141 0 0,144 0 0,147 0 0,150 0 0,153 0 0,156 0 0,159 0 0,162 0 0,165 0 0,168 0 0,171 0 0,174 0 0,177 0 0,180 0 0,183 0 0,186 0 0,189 0 0,192 0 0,195 0 0,198 0 0,201 0 0,204 0 0,207 0 0,210 0 0,213 0 0,216 0 0,219 0 0,222 0 0,225 0 0,228 0 0,231 0 0,234 0 0,237 0 0,240 0 0,243 0 0,246 0 0,249 0 0,252 0 0,255 0 0,258 0 0,261 0 0,264 0 0,267 0 0,270 0 0,273 0 0,276 0 0,279 0 0,282 0 0,285 0 10,288 0 20,291 0 30,294 0 40,297 0 50,297 0 80]
+DEF MOVE_View  PositionInterpolator{
+    key [0 0.26 0.30 0.32 1]
+    keyValue[ 220 15 150, 7 15 160, 7 15 80,-20 15 170, -620 15 200]
+    # key [0 0.12 1.15 0.17 1]
+    # keyValue [220 15 150 ,20 15 160,0 15 50, -20 15 170, -620 15 200]
+    # key [0 1]
+    # keyValue [220 15 150, -620 15 200]
 }
 
+DEF SKY PositionInterpolator {
+    key [ 0 1]
+    keyValue [0 -200 -500, 0 500 -500]
+}
 
+DEF TRAIN PositionInterpolator {
+    key [0 1]
+    keyValue [265 8.4 100,-610 8.4 100]
+}
 
-ROUTE timer.fraction_changed TO scene1.set_fraction
-ROUTE timer.fraction_changed TO engine1.set_fraction
-
-# ROUTE si.value_changed TO pi.set_fraction
-ROUTE scene1.value_changed TO BACKGROUNDSCENE1.set_translation
-ROUTE engine1.value_changed TO MYTRAIN.set_translation
-
-# ROUTE timer.fraction_changed TO oi.set_fraction
-
-# ROUTE si.value_changed TO oi.set_fraction
-# ROUTE oi.value_changed TO WHEEL.set_rotation
-# ROUTE oi.value_changed TO SMALL_WHEEL.set_rotation
+ROUTE touchBox.touchTime TO timer.startTime
+ROUTE timer.fraction_changed TO SKY.set_fraction
+ROUTE timer.fraction_changed TO MOVE_View.set_fraction
+ROUTE timer.fraction_changed TO TRAIN.set_fraction
+ROUTE SKY.value_changed TO BACKGROUND.set_translation
+ROUTE MOVE_View.value_changed TO Camera_001.set_position
+ROUTE TRAIN.value_changed TO FULLTRAIN.set_translation
