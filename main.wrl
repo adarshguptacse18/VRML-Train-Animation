@@ -27,6 +27,41 @@ DEF BACKGROUND Transform {
             rotation 0 0 1 3.14
             children Shape {
                 geometry Box{
+                    size 2100 1000 1
+                }
+                appearance Appearance {
+                    texture ImageTexture {
+                        url "model/sunsetbackground.jpeg"
+                        repeatS TRUE
+                        repeatT TRUE
+                    }      
+                }
+            }
+        }
+    ]
+    
+}
+DEF BACKGROUND2 Transform {
+    translation 800 -200 0
+    rotation 0 1 0 1.57
+    children [
+        Shape {
+        geometry Box{
+            size 2100 1000 1
+        }
+        appearance Appearance {
+             texture ImageTexture {
+                url "model/sunsetbackground.jpeg"
+                repeatS TRUE
+                repeatT TRUE
+            }      
+        }
+        }
+        Transform {
+            translation 0 -990 0
+            rotation 0 0 1 3.14
+            children Shape {
+                geometry Box{
                     size 2000 1000 1
                 }
                 appearance Appearance {
@@ -54,8 +89,16 @@ DEF Camera_Rot Transform {
           orientation 0 1 0 -0.5
         }
         Transform{
-                  translation 0 0 0
-                  children[
+                  children[ 
+                            DEF SUN Transform{
+                                translation 500 100 -500
+                                children Shape {
+                                    geometry Sphere {
+                                        radius 10
+                                    }
+                                    appearance Appearance { material Material { diffuseColor 1 1 0 } }
+                                }
+                            }
                             DEF mountainView Transform {
                                 children [
                                     Inline {
@@ -63,6 +106,7 @@ DEF Camera_Rot Transform {
                                     }
                                 ]
                             }
+
                             DEF lake Transform{
                                 children[
                                     Inline{
@@ -74,6 +118,13 @@ DEF Camera_Rot Transform {
                                         scale 4 4 4
                                         children Inline {
                                             url "model/cow.wrl"
+                                        }
+                                    }
+                                    DEF CYCLE Transform{
+                                        translation -40 5 0
+                                        scale 0.06 0.06 0.06 
+                                        children Inline{
+                                            url "model/bicycle.wrl"
                                         }
                                     }
                                     Transform {
@@ -124,6 +175,11 @@ DEF Camera_Rot Transform {
 
                                 ]
                             }   
+                            Transform{
+                                children Inline{
+                                    url "model/fence.wrl"
+                                }
+                            }
                             Transform {
                                 translation 245 0 60
                                 scale 4 4 4
@@ -243,8 +299,8 @@ DEF timer TimeSensor {
 
 
 DEF MOVE_View  PositionInterpolator{
-    key [0 0.26 0.30 0.32 1]
-    keyValue[ 220 15 150, 7 15 160, 7 15 80,-20 15 170, -620 15 200]
+    key [0 0.24 0.30 0.35 1]
+    keyValue[ 220 15 150, 7 15 160, -10 15 80,-20 15 170, -650 15 200]
     # key [0 0.12 1.15 0.17 1]
     # keyValue [220 15 150 ,20 15 160,0 15 50, -20 15 170, -620 15 200]
     # key [0 1]
@@ -255,16 +311,29 @@ DEF SKY PositionInterpolator {
     key [ 0 1]
     keyValue [0 -200 -500, 0 500 -500]
 }
+DEF SKY2 PositionInterpolator {
+    key [ 0 1]
+    keyValue [800 -200 0, 800 500 -500]
+}
+
 
 DEF TRAIN PositionInterpolator {
     key [0 1]
     keyValue [265 8.4 100,-610 8.4 100]
 }
 
+DEF SUNp PositionInterpolator{
+    key [0 0.5 1]
+    keyValue [ 500 100 -500, 000 300 -500, -500 80 0    ]
+}
 ROUTE touchBox.touchTime TO timer.startTime
 ROUTE timer.fraction_changed TO SKY.set_fraction
+ROUTE timer.fraction_changed TO SKY2.set_fraction
+ROUTE timer.fraction_changed TO SUNp.set_fraction
 ROUTE timer.fraction_changed TO MOVE_View.set_fraction
 ROUTE timer.fraction_changed TO TRAIN.set_fraction
+ROUTE SUNp.value_changed TO SUN.set_translation
 ROUTE SKY.value_changed TO BACKGROUND.set_translation
+ROUTE SKY2.value_changed TO BACKGROUND2.set_translation
 ROUTE MOVE_View.value_changed TO Camera_001.set_position
 ROUTE TRAIN.value_changed TO FULLTRAIN.set_translation
